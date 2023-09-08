@@ -1,0 +1,23 @@
+import socket
+
+
+def get_local_ip():
+    """使用socket获取本地IP地址"""
+    # 创建一个新的socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    try:
+        # 不必真的发送数据，只是通过这个方法我们可以得到本机的IP地址
+        s.connect(('8.8.8.8', 1))
+        local_ip = s.getsockname()[0]
+    except:
+        # 如果无法连接Google DNS服务器，就返回一个空字符串
+        local_ip = ''
+    finally:
+        # 关闭socket
+        s.close()
+
+    return local_ip
+
+
+print(get_local_ip())
