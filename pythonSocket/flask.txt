@@ -1,0 +1,24 @@
+import queue
+
+from flask import Flask, jsonify, request
+import subprocess
+import socket
+import threading
+import zlwSocket
+
+app = Flask(__name__)
+
+
+@app.route('/', methods=['POST'])
+def post_start_client():
+    try:
+
+	
+        return jsonify(q.get())
+    except Exception as e:
+        print(e)
+        return str(e), 500
+
+
+if __name__ == '__main__':
+    app.run()
