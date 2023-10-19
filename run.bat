@@ -21,5 +21,5 @@ if exist "venv" (
 echo 复制公共接口文件到虚拟环境中
 xcopy common venv\Lib\site-packages\self_api\ /s /e /y
 
-python run_task.py
+python app.py
 cmd 

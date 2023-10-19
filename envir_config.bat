@@ -21,6 +21,8 @@ pip install pytest-repeat
 pip install pytest-testreport
 pip install pytest-rerunfailures
 pip install openpyxl
+pip install flask==2.3.3
+pip install Flask-Cors==4.0.0
 TIMEOUT /T 2
 
 echo 查看当前python环境的依赖包
