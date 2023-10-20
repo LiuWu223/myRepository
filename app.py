@@ -9,6 +9,13 @@ def getThisIp():
         if iss != -1:
             return i[i[iss:-1].find(':') + 5:-1]
     return 'not Ip'
+def ss():
+    os.system("adb devices")
+    sleep(2)
+    print("设置测试机不休眠")
+    os.system("adb -s " + device_id + " shell settings put system screen_off_timeout 1000000000")
+    sleep(2)
+    os.system("cd testcase/" + test_type + "&& pytest " + case_name)
 
 def apps():
     # 接收用户传的用户ID，项目ID，项目的任务
@@ -36,6 +43,7 @@ def apps():
     for i in xx:
         result_title = [str(i['caseId']), str(i['device']), '--', 'test_third_app', 'test_App_Fuc_all.py', str(i['caseName']).split('-')[0], str(i['caseName']).split('-')[1]]
         record_test_info(result_title)
+        ss()
 
 
 
