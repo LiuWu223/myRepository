@@ -7,8 +7,8 @@ import uiautomator2 as u2
 # 获取任务信息
 pwd = os.getcwd().split('testcase')[0]
 print(pwd)
-excel_file = pwd + os.sep + 'task_list.xlsx'
-data = pd.read_excel(excel_file)
+excel_file = pwd + os.sep + 'task_list.csv'
+data = pd.read_csv(excel_file, encoding="gbk")
 task_info = data.to_dict('records')[0]
 print(task_info)
 device_id = str(task_info['devices号'])
