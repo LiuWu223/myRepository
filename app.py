@@ -1,6 +1,7 @@
 import csv
 import os
 import requests
+from time import sleep  
 
 def getThisIp():
     ip = os.popen('ipconfig').readlines()
@@ -9,13 +10,6 @@ def getThisIp():
         if iss != -1:
             return i[i[iss:-1].find(':') + 5:-1]
     return 'not Ip'
-def ss():
-    os.system("adb devices")
-    sleep(2)
-    print("设置测试机不休眠")
-    os.system("adb -s " + device_id + " shell settings put system screen_off_timeout 1000000000")
-    sleep(2)
-    os.system("cd testcase/" + test_type + "&& pytest " + case_name)
 
 def apps():
     # 接收用户传的用户ID，项目ID，项目的任务
@@ -24,12 +18,12 @@ def apps():
         #功能: 记录本次测试的应用信息
         #参数: 列表
         """
-        with open('task_list.xlsx', 'a', newline='') as f:
+        with open('task_list.csv', 'a', newline='') as f:
             csv_writer = csv.writer(f)
             csv_writer.writerow(info)
     ip = getThisIp()
-    if os.path.exists('task_list.xlsx'):
-        os.remove('task_list.xlsx')
+    if os.path.exists('task_list.csv'):
+        os.remove('task_list.csv')
 
     result_title = ['序号', 'devices号', '机型', '测试类型', '用例名', '应用序号_首', '应用序号_尾']
     record_test_info(result_title)
@@ -39,13 +33,11 @@ def apps():
     response = requests.get(url)
     a = response.json()
     xx = a['data']
+    print(xx)
 
-    for i in xx:
-        result_title = [str(i['caseId']), str(i['device']), '--', 'test_third_app', 'test_App_Fuc_all.py', str(i['caseName']).split('-')[0], str(i['caseName']).split('-')[1]]
-        record_test_info(result_title)
-        ss()
-
-
+    result_title = [str(xx['id']), str(xx['devices']), '--', 'test_third_app', 'test_App_Fuc_all.py', str(xx['tripartite']).split(',')[0], str(xx['tripartite']).split(',')[1]]
+    record_test_info(result_title)
+    os.system("python run_task.py")
 
 if __name__ == '__main__':
     apps()

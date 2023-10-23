@@ -1,3 +1,0 @@
-序号,devices号,机型,测试类型,用例名,应用序号_首,应用序号_尾
-1,",TXPV11A000003095B00099",--,test_third_app,test_App_Fuc_all.py,50,100
-2,",TXPV11A000003095B00099",--,test_third_app,test_App_Fuc_all.py,100,200
