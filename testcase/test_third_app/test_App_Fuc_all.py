@@ -79,9 +79,9 @@ def app_install(app_name, app_pkg):
     sleep(5)
     if d(resourceId="com.seewo.studystation.update:id/privacyAgreeCheckBox").exists:
         d(resourceId="com.seewo.studystation.update:id/privacyAgreeCheckBox").click()
-    sleep(3)
-    d(text="同意").click()
-    sleep(3)
+        sleep(3)
+        d(text="同意").click()
+        sleep(3)
 
     logging.info("app_install_2.搜索应用")
     d(resourceId="com.seewo.studystation.update:id/searchView").click(timeout=20)
@@ -238,7 +238,4 @@ def test_app_fuc(get):
         count += 1
     else:
         logging.info("*******本次没有待测试的应用，测试中止*******")
-
-
-
 
