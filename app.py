@@ -29,7 +29,7 @@ def apps():
     record_test_info(result_title)
     # 写表
     # 请求查询用户信息接口，通过IP地址查询
-    url = 'http://172.20.83.208:3000/auto_sw_admin_war/sy/syUser/selectByUserIp/' + ip
+    url = 'http://172.20.83.212:3000/auto_sw_admin_war/sy/syUser/selectByUserIp/' + ip
     response = requests.get(url)
     a = response.json()
     xx = a['data']
